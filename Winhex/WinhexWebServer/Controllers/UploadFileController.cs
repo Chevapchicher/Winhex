@@ -17,7 +17,6 @@ namespace WinhexWebServer.Controllers
         public UploadFileController(ILogManager logManager)
         {
             _logManager = logManager;
-            _logManager.AddUserLog(new UserLog{ CompName = "comp", SendingDateTime = DateTime.Now});
         }
         [HttpPost]
         public IActionResult Post(UserLog file)
@@ -27,7 +26,7 @@ namespace WinhexWebServer.Controllers
         }
 
         [HttpGet]
-        public List<UserLog> GetUserLogs()
+        public UserLog[] GetUserLogs()
         {
             return _logManager.GetUserLogs();
         }

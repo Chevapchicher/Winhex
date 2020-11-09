@@ -8,7 +8,17 @@ namespace WinhexWebServer.Models
         {
             Database.EnsureCreated();
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserLog>()
+                .HasMany(x => x.Logs)
+                .WithOne(x => x.UserLog)
+                .HasForeignKey(x => x.LogId);
+            // использование Fluent API
+            base.OnModelCreating(modelBuilder);
+        }
 
-        public DbSet<UserLog> UserLog { get; set; }
+        public virtual DbSet<UserLog> UserLog { get; set; }
+        public virtual DbSet<UserAction> UserAction { get; set; }
     }
 }

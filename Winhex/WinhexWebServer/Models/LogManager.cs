@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WinhexWebServer.Interfaces;
 
 namespace WinhexWebServer.Models
@@ -22,6 +23,8 @@ namespace WinhexWebServer.Models
             {
                 db.UserLog.Add(log);
                 db.SaveChanges();
+                var tt = db.UserLog.FirstOrDefault(x => x.SendingDateTime == log.SendingDateTime);
+               
             }
             catch (Exception ex)
             {
@@ -31,13 +34,9 @@ namespace WinhexWebServer.Models
             return true;
         }
         
-        public List<UserLog> GetUserLogs()
+        public UserLog[] GetUserLogs()
         {
-            foreach (var log in db.UserLog.ToList())
-            {
-                Console.WriteLine(log);
-            }
-            return db.UserLog.ToList();
+            return db.UserLog.Include(x => x.Logs).ToArray();
         }
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)

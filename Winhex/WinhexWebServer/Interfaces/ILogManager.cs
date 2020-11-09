@@ -8,7 +8,7 @@ namespace WinhexWebServer.Interfaces
     public interface ILogManager
     {
         bool AddUserLog(UserLog log);
-        List<UserLog> GetUserLogs();
+        UserLog[] GetUserLogs();
         UserLog GetUserLog(Expression<Func<UserLog, bool>> act);
     }
 }

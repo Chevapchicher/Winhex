@@ -30,6 +30,7 @@ namespace WinhexWebServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(); 
+            services.AddMvc().AddNewtonsoftJson();
             string connection = Configuration.GetConnectionString("DefaultConnection");
             // добавляем контекст Context в качестве сервиса в приложение
             services.AddDbContext<Context>(options =>
@@ -38,7 +39,10 @@ namespace WinhexWebServer
 
             services.AddTransient<IFileLogGetter, UploadFileController>();
             services.AddTransient<ILogManager, LogManager>();
-            services.AddTransient<Context, Context>();
+            services.AddTransient<Context, Context>(); 
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
