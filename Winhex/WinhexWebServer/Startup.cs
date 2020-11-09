@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WinhexWebServer.Controllers;
+using WinhexWebServer.Interfaces;
+using WinhexWebServer.Models;
 
 namespace WinhexWebServer
 {
@@ -25,7 +29,16 @@ namespace WinhexWebServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(); 
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            // добавляем контекст Context в качестве сервиса в приложение
+            services.AddDbContext<Context>(options =>
+                options.UseSqlServer(connection));
+            services.AddControllersWithViews();
+
+            services.AddTransient<IFileLogGetter, UploadFileController>();
+            services.AddTransient<ILogManager, LogManager>();
+            services.AddTransient<Context, Context>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
