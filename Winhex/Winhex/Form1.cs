@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using Winhex.Models;
 
 namespace Winhex
@@ -19,19 +18,23 @@ namespace Winhex
         public Form1()
         {
             InitializeComponent();
-            
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PostRequestAsync();
+        }
         private static void PostRequestAsync()
         {
             List<UserAction> actions = new List<UserAction>();
             actions.Add(new UserAction() { ActionDateTime = DateTime.Now, AppTitle = "Chrome", TextLog = "heelo!" });
             var log = new UserLog() { CompName = "MyComp", SendingDateTime = DateTime.Now };
             log.Logs.Add(actions[0]);
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
+            WebRequest request = WebRequest.Create("http://www.ihih.somee.com/upload");//"https://localhost:5001/upload");
 
-
-            WebRequest request = WebRequest.Create("https://localhost:44373/upload");
             request.Method = "POST"; // для отправки используется метод Post
             // данные для отправки
             string data = JsonConvert.SerializeObject(log);
@@ -58,18 +61,6 @@ namespace Winhex
             }
             response.Close();
             Console.WriteLine("Запрос выполнен...");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                PostRequestAsync();
-            }
-            catch (Exception ex)
-            {
-                File.WriteAllText("log.txt", ex.Message);
-            }
         }
     }
 }

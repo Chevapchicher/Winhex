@@ -15,7 +15,6 @@ C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\staticwebassets\Winhex
 C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\WinhexWebServer.dll
 C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\WinhexWebServer.pdb
 C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\WinhexWebServer.genruntimeconfig.cache
-C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\WinhexWebServer.csprojAssemblyReference.cache
 C:\mainGit\Winhex\WinhexWebServer\obj\Debug\netcoreapp3.1\WinhexWebServer.csproj.CopyComplete
 C:\mainGit\Winhex\WinhexWebServer\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\mainGit\Winhex\WinhexWebServer\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
