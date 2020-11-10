@@ -13,7 +13,7 @@ namespace Winhex.Models
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            WebRequest request = WebRequest.Create(url);//"http://www.ihih.somee.com/upload");//"https://localhost:5001/upload");
+            WebRequest request = WebRequest.Create("https://localhost:5001/upload");//"http://www.ihih.somee.com/upload");//"https://localhost:5001/upload"); "https://localhost:44373/upload"
 
             request.Method = "POST"; // для отправки используется метод Post
 

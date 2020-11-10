@@ -21,9 +21,14 @@ namespace WinhexWebServer.Models
         {
             try
             {
-                db.UserLog.Add(log);
+                var userLog = db.UserLog.FirstOrDefault(x => x.CompName == log.CompName);
+
+                if (userLog == null)
+                    db.UserLog.Add(log);
+                else
+                    userLog.Logs.AddRange(log.Logs);
+
                 db.SaveChanges();
-                var tt = db.UserLog.FirstOrDefault(x => x.SendingDateTime == log.SendingDateTime);
                
             }
             catch (Exception ex)

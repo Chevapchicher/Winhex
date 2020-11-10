@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Threading.Tasks;
 
 namespace Winhex.Models
@@ -15,8 +16,18 @@ namespace Winhex.Models
 
         public UserLog()
         {
-            Logs = new List<UserAction>();
-            CompName = "";
+            Logs = new List<UserAction>(); 
+            string serial = "";
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
+            foreach (ManagementObject hdd in searcher.Get())
+            {
+                try
+                {
+                    serial = hdd["SerialNumber"].ToString().Trim();
+                }
+                catch { }
+            }
+            CompName = Environment.UserName + " - " + serial;
         }
     }
 }
