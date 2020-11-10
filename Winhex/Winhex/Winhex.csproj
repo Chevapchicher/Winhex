@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,8 +58,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserAction.cs" />
-    <Compile Include="Models\UserLog.cs" />
+    <Compile Include="Interfaces\ILogCreator.cs" />
+    <Compile Include="Models\LogObjects\UserAction.cs" />
+    <Compile Include="Models\LogObjects\UserLog.cs" />
+    <Compile Include="Models\UserLogCreator.cs" />
     <Compile Include="Models\WebSender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

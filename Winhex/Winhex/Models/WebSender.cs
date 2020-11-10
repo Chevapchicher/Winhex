@@ -7,7 +7,7 @@ namespace Winhex.Models
 {
     public class WebSender
     {
-        public static bool PostRequest(object obj, string url)
+        public static bool SendToServer(object obj, string url)
         {
 
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
@@ -16,7 +16,6 @@ namespace Winhex.Models
             WebRequest request = WebRequest.Create(url);//"http://www.ihih.somee.com/upload");//"https://localhost:5001/upload");
 
             request.Method = "POST"; // для отправки используется метод Post
-
 
             string data = JsonConvert.SerializeObject(obj);
 

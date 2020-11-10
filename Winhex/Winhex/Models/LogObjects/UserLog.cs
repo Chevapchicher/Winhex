@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Winhex.Models
 {
+    [Serializable]
     public class UserLog
     {
         public int Id { get; set; }
@@ -15,6 +16,7 @@ namespace Winhex.Models
         public UserLog()
         {
             Logs = new List<UserAction>();
+            CompName = "";
         }
     }
 }
