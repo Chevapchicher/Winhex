@@ -7,6 +7,10 @@ namespace Winhex
 {
     static class Program
     {
+        static Program()
+        {
+            Resolver.RegisterDependencyResolver();
+        }
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

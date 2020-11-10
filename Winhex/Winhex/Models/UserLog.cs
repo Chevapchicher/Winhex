@@ -7,7 +7,6 @@ namespace Winhex.Models
 {
     public class UserLog
     {
-       
         public int Id { get; set; }
         public DateTime SendingDateTime { get; set; }
         public string CompName { get; set; }

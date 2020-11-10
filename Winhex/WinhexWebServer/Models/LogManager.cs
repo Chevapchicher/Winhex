@@ -41,7 +41,7 @@ namespace WinhexWebServer.Models
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)
         {
-            return db.UserLog.FirstOrDefault(act);
+            return db.UserLog.Include(x => x.Logs).FirstOrDefault(act);
         }
     }
 }
