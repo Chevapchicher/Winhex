@@ -11,32 +11,31 @@ namespace WinhexWebServer.Models
 {
     public class LogManager : ILogManager
     {
-        private Context db;
 
-        public LogManager(Context c)
+        public LogManager()//Context c)
         {
-            db = c;
         }
         public bool AddUserLog(UserLog log)
         {
-            try
-            {
-                db.UserLog.Add(log);
-                db.SaveChanges();
-                var tt = db.UserLog.FirstOrDefault(x => x.SendingDateTime == log.SendingDateTime);
+            //try
+            //{
+            //    db.UserLog.Add(log);
+            //    db.SaveChanges();
+            //    var tt = db.UserLog.FirstOrDefault(x => x.SendingDateTime == log.SendingDateTime);
                
-            }
-            catch (Exception ex)
-            {
-                //todo loging
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //todo loging
+            //    return false;
+            //}
             return true;
         }
         
         public UserLog[] GetUserLogs()
         {
-            return db.UserLog.Include(x => x.Logs).ToArray();
+            // return db.UserLog.Include(x => x.Logs).ToArray();
+            return new[] { new UserLog() { CompName = "123", SendingDateTime = DateTime.MaxValue } };
         }
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)

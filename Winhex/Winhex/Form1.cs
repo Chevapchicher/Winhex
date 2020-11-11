@@ -31,7 +31,7 @@ namespace Winhex
 
 
 
-            WebRequest request = WebRequest.Create("https://localhost:44373/upload");
+            WebRequest request = WebRequest.Create("http://ihih.somee.com/upload");
             request.Method = "POST"; // для отправки используется метод Post
             // данные для отправки
             string data = JsonConvert.SerializeObject(log);
