@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WinhexWebServer.Interfaces;
 using WinhexWebServer.Models;
 
@@ -23,12 +18,6 @@ namespace WinhexWebServer.Controllers
         {
             _logManager.AddUserLog(file);
             return Ok();
-        }
-
-        [HttpGet]
-        public UserLog[] GetUserLogs()
-        {
-            return _logManager.GetUserLogs();
         }
     }
 }
