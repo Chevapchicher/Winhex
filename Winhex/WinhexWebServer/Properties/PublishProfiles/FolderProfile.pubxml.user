@@ -4,10 +4,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-<<<<<<< HEAD
-    <_PublishTargetUrl>E:\Git\main\Winhex\WinhexWebServer\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
-=======
     <_PublishTargetUrl>C:\mainGit\Winhex\WinhexWebServer\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
->>>>>>> a643e807a398f7d545a0f0de378f13d060b280e3
   </PropertyGroup>
 </Project>

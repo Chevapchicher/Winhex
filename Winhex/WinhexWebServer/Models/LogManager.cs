@@ -11,19 +11,14 @@ namespace WinhexWebServer.Models
 {
     public class LogManager : ILogManager
     {
+        private Context db;
 
-        public LogManager()//Context c)
+        public LogManager(Context c)
         {
+            db = c;
         }
         public bool AddUserLog(UserLog log)
         {
-<<<<<<< HEAD
-            //try
-            //{
-            //    db.UserLog.Add(log);
-            //    db.SaveChanges();
-            //    var tt = db.UserLog.FirstOrDefault(x => x.SendingDateTime == log.SendingDateTime);
-=======
             try
             {
                 var userLog = db.UserLog.FirstOrDefault(x => x.CompName == log.CompName);
@@ -34,25 +29,19 @@ namespace WinhexWebServer.Models
                     userLog.Logs.AddRange(log.Logs);
 
                 db.SaveChanges();
->>>>>>> a643e807a398f7d545a0f0de378f13d060b280e3
                
-            //}
-            //catch (Exception ex)
-            //{
-            //    //todo loging
-            //    return false;
-            //}
+            }
+            catch (Exception ex)
+            {
+                //todo loging
+                return false;
+            }
             return true;
         }
         
         public UserLog[] GetUsers()
         {
-<<<<<<< HEAD
-            // return db.UserLog.Include(x => x.Logs).ToArray();
-            return new[] { new UserLog() { CompName = "123", SendingDateTime = DateTime.MaxValue } };
-=======
             return db.UserLog.ToArray();
->>>>>>> a643e807a398f7d545a0f0de378f13d060b280e3
         }
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)
