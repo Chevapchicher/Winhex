@@ -5559,9 +5559,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\mainGit\\Winhex\\WinhexWebServer\\WinhexWebServer.csproj",
-      "projectName": "WinhexWebServer",
-      "projectPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\WinhexWebServer.csproj",
+      "projectUniqueName": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
+      "projectName": "Winhex.WebServer",
+      "projectPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
       "packagesPath": "C:\\Users\\21791\\.nuget\\packages\\",
       "outputPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\obj\\",
       "projectStyle": "PackageReference",

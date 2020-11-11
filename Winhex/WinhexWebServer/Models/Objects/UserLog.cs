@@ -10,13 +10,14 @@ namespace WinhexWebServer.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime SendingDateTime { get; set; }
         public string CompName { get; set; }
+        public string CustomNote { get; set; }
         public virtual List<UserAction> Logs { get; set; }
 
         public UserLog()
         {
             Logs = new List<UserAction>();
+            CustomNote = "";
         }
     }
 }

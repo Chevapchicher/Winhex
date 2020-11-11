@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "slJ8cvCHFjPiMNcjb3QcvVQQUgxxMWzGnFA2Rs1ewRl21IGoIC6o6LfjhwVZ7Se9NJ89gAtyvBziauU//9VLcg==",
+  "dgSpecHash": "XZFOBoIg/sA2P99vWadgg/ko4yd/aU3C+ubKhC0xj/Nc2jwz6IsoVtsoBpGMkkwF2DuahXYnm69sZHbOJ66TPQ==",
   "success": true,
-  "projectFilePath": "C:\\mainGit\\Winhex\\WinhexWebServer\\WinhexWebServer.csproj",
+  "projectFilePath": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\21791\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
     "C:\\Users\\21791\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",

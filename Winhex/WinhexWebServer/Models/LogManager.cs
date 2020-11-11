@@ -39,14 +39,23 @@ namespace WinhexWebServer.Models
             return true;
         }
         
-        public UserLog[] GetUserLogs()
+        public UserLog[] GetUsers()
         {
-            return db.UserLog.Include(x => x.Logs).ToArray();
+            return db.UserLog.ToArray();
         }
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)
         {
             return db.UserLog.Include(x => x.Logs).FirstOrDefault(act);
+        }
+
+        public bool SetNote(int id, string note)
+        {
+            var user = db.UserLog.FirstOrDefault(x => x.Id == id);
+            if (user == null) return false;
+            user.CustomNote = note;
+            db.SaveChanges();
+            return true;
         }
     }
 }

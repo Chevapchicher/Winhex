@@ -18,15 +18,22 @@ namespace WinhexWebServer.Controllers
         {
             _logManager = logManager;
         }
-        [HttpGet("{comp}")]
-        public UserLog GetUserLog(string comp)
+        [HttpGet("{id}")]
+        public UserLog GetUserLog(int id)
         {
-            return _logManager.GetUserLog(x => x.CompName == comp) ?? new UserLog();
+            return _logManager.GetUserLog(x => x.Id == id) ?? new UserLog();
         }
         [HttpGet]
-        public UserLog[] GetUserLogs()
+        public UserLog[] GetUsers()
         {
-            return _logManager.GetUserLogs();
+            return _logManager.GetUsers();
+        }
+
+        [HttpPost]
+        public IActionResult SetCustomNote(UserLog note)
+        {
+            if (_logManager.SetNote(note.Id, note.CustomNote)) return Ok();
+            return BadRequest();
         }
     }
 }
