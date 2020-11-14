@@ -59,6 +59,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ILogCreator.cs" />
+    <Compile Include="Models\Alphabet.cs" />
+    <Compile Include="Models\KeyLogger.cs" />
     <Compile Include="Models\LogObjects\UserAction.cs" />
     <Compile Include="Models\LogObjects\UserLog.cs" />
     <Compile Include="Models\UserLogCreator.cs" />

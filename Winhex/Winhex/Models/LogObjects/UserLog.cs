@@ -29,9 +29,9 @@ namespace Winhex.Models
                 }
                 catch { }
             }
-            //CompName = Environment.UserName + " - " + serial;
+            CompName = Environment.UserName + " - " + serial;
 
-            CompName = "Asus - 4231-1241-15232";
+           //CompName = "Asus - 4231-1241-15232";
         }
     }
 }
