@@ -17,6 +17,8 @@ namespace WinhexWebServer.Models
         {
             db = c;
         }
+
+
         public bool AddUserLog(UserLog log)
         {
             try
@@ -59,4 +61,3 @@ namespace WinhexWebServer.Models
         }
     }
 }
-sss

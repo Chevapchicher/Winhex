@@ -5,6 +5,9 @@ namespace Winhex.Admin
 {
     public class AppConfig
     {
+        /// <summary>
+        /// URL сервера, с которого будем забирать логи
+        /// </summary>
         public string Url { get; set; }
 
         public static void SaveConfig(AppConfig conf)

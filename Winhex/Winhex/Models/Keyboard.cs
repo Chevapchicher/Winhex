@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Winhex.Models
 {
+    /// <summary>
+    /// Раскладка клавиатуры пользователя
+    /// </summary>
     enum Keyboard
     {
         rus,

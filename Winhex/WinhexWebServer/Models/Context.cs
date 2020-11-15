@@ -17,10 +17,7 @@ namespace WinhexWebServer.Models
             // использование Fluent API
             base.OnModelCreating(modelBuilder);
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySql("server=sql307.hostingem.ru;UserId=gnioo_27156530;Password=udajutud;database=gnioo_27156530_main;");
-        //}
+
         public DbSet<UserLog> UserLog { get; set; }
         public DbSet<UserAction> UserAction { get; set; }
     }

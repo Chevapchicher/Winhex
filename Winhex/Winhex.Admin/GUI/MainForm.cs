@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DevExpress.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,13 @@ namespace Winhex.Admin
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            SizeChanged += MainForm_SizeChanged;
             LoadUsersFromServer();
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            comboBox_ValueChanged(null, null);
         }
 
         private void LoadUsersFromServer()
@@ -46,6 +53,8 @@ namespace Winhex.Admin
                 gridControl.DataSource = logs;
                 gridView1.Columns["Id"].Visible = false;
 
+                gridView1.Columns[1].DisplayFormat.FormatType = FormatType.DateTime;
+                gridView1.Columns[1].DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss";
                 gridView1.Columns[1].Caption = "Date/Time"; 
                 gridView1.Columns[1].BestFit();
 
