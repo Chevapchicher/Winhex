@@ -10,8 +10,8 @@ namespace WinhexWebServer.Interfaces
     /// <summary>
     /// Контроллер, получающий логи
     /// </summary>
-    interface IFileLogGetter
+    public interface IUploadFileController
     {
-        IActionResult Post(UserLog file);
+        bool Post(UserLog file);
     }
 }

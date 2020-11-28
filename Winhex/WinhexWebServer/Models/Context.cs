@@ -8,6 +8,7 @@ namespace WinhexWebServer.Models
         {
             Database.EnsureCreated();
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserLog>()

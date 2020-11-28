@@ -6,7 +6,7 @@ namespace WinhexWebServer.Controllers
 {
     [Route("upload")]
     [ApiController]
-    public class UploadFileController : ControllerBase, IFileLogGetter
+    public class UploadFileController : ControllerBase, IUploadFileController
     {
         private readonly ILogManager _logManager;
         public UploadFileController(ILogManager logManager)
@@ -14,10 +14,9 @@ namespace WinhexWebServer.Controllers
             _logManager = logManager;
         }
         [HttpPost]
-        public IActionResult Post(UserLog file)
+        public bool Post(UserLog file)
         {
-            _logManager.AddUserLog(file);
-            return Ok();
+            return _logManager.AddUserLog(file); 
         }
     }
 }

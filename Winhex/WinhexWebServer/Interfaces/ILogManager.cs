@@ -11,7 +11,7 @@ namespace WinhexWebServer.Interfaces
     public interface ILogManager
     {
         /// <summary>
-        /// Добавить логи для пользоввателя 
+        /// Добавить логи для пользователя 
         /// </summary>
         /// <param name="log">Объект логов</param>
         /// <returns></returns>
