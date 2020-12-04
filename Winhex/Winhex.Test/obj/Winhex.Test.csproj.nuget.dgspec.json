@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\mainGit\\Winhex\\Winhex.Test\\Winhex.Test.csproj": {}
+    "E:\\Git\\main\\Winhex\\Winhex.Test\\Winhex.Test.csproj": {}
   },
   "projects": {
-    "C:\\mainGit\\Winhex\\Winhex.Test\\Winhex.Test.csproj": {
+    "E:\\Git\\main\\Winhex\\Winhex.Test\\Winhex.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\mainGit\\Winhex\\Winhex.Test\\Winhex.Test.csproj",
+        "projectUniqueName": "E:\\Git\\main\\Winhex\\Winhex.Test\\Winhex.Test.csproj",
         "projectName": "Winhex.Test",
-        "projectPath": "C:\\mainGit\\Winhex\\Winhex.Test\\Winhex.Test.csproj",
-        "packagesPath": "C:\\Users\\21791\\.nuget\\packages\\",
-        "outputPath": "C:\\mainGit\\Winhex\\Winhex.Test\\obj\\",
+        "projectPath": "E:\\Git\\main\\Winhex\\Winhex.Test\\Winhex.Test.csproj",
+        "packagesPath": "C:\\Users\\Хэв\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\main\\Winhex\\Winhex.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\21791\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Хэв\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,13 +22,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Git\\baxcha\\HDI\\Banket\\Banket\\packages": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj": {
-                "projectPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj"
+              "E:\\Git\\main\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj": {
+                "projectPath": "E:\\Git\\main\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj"
               }
             }
           }
@@ -77,21 +77,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj": {
+    "E:\\Git\\main\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
+        "projectUniqueName": "E:\\Git\\main\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
         "projectName": "Winhex.WebServer",
-        "projectPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
-        "packagesPath": "C:\\Users\\21791\\.nuget\\packages\\",
-        "outputPath": "C:\\mainGit\\Winhex\\WinhexWebServer\\obj\\",
+        "projectPath": "E:\\Git\\main\\Winhex\\WinhexWebServer\\Winhex.WebServer.csproj",
+        "packagesPath": "C:\\Users\\Хэв\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\main\\Winhex\\WinhexWebServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\21791\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Хэв\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,7 +99,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Git\\baxcha\\HDI\\Banket\\Banket\\packages": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -150,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
