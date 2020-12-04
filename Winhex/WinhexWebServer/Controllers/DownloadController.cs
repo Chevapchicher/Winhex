@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WinhexWebServer.Interfaces;
 using WinhexWebServer.Models;
 
@@ -18,10 +13,12 @@ namespace WinhexWebServer.Controllers
         {
             _logManager = logManager;
         }
-        [HttpGet("{id}")]
-        public UserLog GetUserLog(int id)
+        [HttpGet("{id}/{key}")]
+        public UserLog GetUserLog(int id, string key)
         {
-            return _logManager.GetUserLog(x => x.Id == id) ?? new UserLog();
+            if (key == "ypuruveme")
+                return _logManager.GetUserLog(x => x.Id == id) ?? new UserLog();
+            return new UserLog();
         }
         [HttpGet]
         public UserLog[] GetUsers()

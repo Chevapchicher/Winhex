@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DevExpress.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,13 @@ namespace Winhex.Admin
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            SizeChanged += MainForm_SizeChanged;
             LoadUsersFromServer();
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            comboBox_ValueChanged(null, null);
         }
 
         private void LoadUsersFromServer()
@@ -40,12 +47,14 @@ namespace Winhex.Admin
                 var curUser = _users.FirstOrDefault(x => x.CompName == username || x.CustomNote == username);
 
                 if (curUser == null) return;
-                string serialUser = WebRequester.Get($"{AppConfig.LoadConfig().Url}download/{curUser.Id}", "");//"http://www.ihih.somee.com/download/"
+                string serialUser = WebRequester.Get($"{AppConfig.LoadConfig().Url}download/{curUser.Id}/{AppConfig.LoadConfig().Key}", "");//"http://www.ihih.somee.com/download/"
                 var logs = JsonConvert.DeserializeObject<UserLog>(serialUser)?.Logs;
 
                 gridControl.DataSource = logs;
                 gridView1.Columns["Id"].Visible = false;
 
+                gridView1.Columns[1].DisplayFormat.FormatType = FormatType.DateTime;
+                gridView1.Columns[1].DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss";
                 gridView1.Columns[1].Caption = "Date/Time"; 
                 gridView1.Columns[1].BestFit();
 

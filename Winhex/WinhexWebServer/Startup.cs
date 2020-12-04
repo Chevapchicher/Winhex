@@ -33,11 +33,10 @@ namespace WinhexWebServer
             services.AddMvc().AddNewtonsoftJson();
             string connection = Configuration.GetConnectionString("DefaultConnection");
             // добавляем контекст Context в качестве сервиса в приложение
-            services.AddDbContext<Context>(options =>
-                options.UseSqlServer(connection));
+            services.AddDbContext<Context>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
 
-            services.AddTransient<IFileLogGetter, UploadFileController>();
+            services.AddTransient<IUploadFileController, UploadFileController>();
             services.AddTransient<ILogManager, LogManager>();
             services.AddTransient<Context, Context>(); 
             services.AddControllersWithViews().AddNewtonsoftJson(options =>

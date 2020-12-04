@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Winhex.Models
 {
+    /// <summary>
+    /// Объект пользователя
+    /// </summary>
     [Serializable]
     public class UserLog
     {
         public int Id { get; set; }
+        /// <summary>
+        /// Имя пользователя
+        /// </summary>
         public string CompName { get; set; }
+        /// <summary>
+        /// Кастомное примечание
+        /// </summary>
         public string CustomNote { get; set; }
         public List<UserAction> Logs { get; set; }
 
@@ -29,9 +38,9 @@ namespace Winhex.Models
                 }
                 catch { }
             }
-            //CompName = Environment.UserName + " - " + serial;
+            CompName = Environment.UserName + " - " + serial;
 
-            CompName = "Asus - 4231-1241-15232";
+           //CompName = "Asus - 4231-1241-15232";
         }
     }
 }

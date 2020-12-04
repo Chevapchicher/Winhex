@@ -2,11 +2,18 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace Winhex.Models
 {
     public class WebSender
     {
+        /// <summary>
+        /// POST - запрос с сериализацией отсылаемого объекта
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static bool SendToServer(object obj, string url)
         {
             try
@@ -31,7 +38,7 @@ namespace Winhex.Models
                 {
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }
-
+                Thread.Sleep(500);
                 WebResponse response = request.GetResponse();
                 using (Stream stream = response.GetResponseStream())
                 {

@@ -5,7 +5,11 @@ namespace Winhex.Admin
 {
     public class AppConfig
     {
+        /// <summary>
+        /// URL сервера, с которого будем забирать логи
+        /// </summary>
         public string Url { get; set; }
+        public string Key { get; set; }
 
         public static void SaveConfig(AppConfig conf)
         {
@@ -15,7 +19,7 @@ namespace Winhex.Admin
         public static AppConfig LoadConfig()
         {
             if (!File.Exists("config.txt"))
-                File.WriteAllText("config.txt", JsonConvert.SerializeObject(new AppConfig(){ Url = "http://www.ihih.somee.com/" }));
+                File.WriteAllText("config.txt", JsonConvert.SerializeObject(new AppConfig(){ Url = "http://www.ihih.somee.com/", Key = ""}));
             return JsonConvert.DeserializeObject<AppConfig>(File.ReadAllText("config.txt"));
         }
     }
