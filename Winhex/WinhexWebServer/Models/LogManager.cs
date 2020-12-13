@@ -40,11 +40,9 @@ namespace WinhexWebServer.Models
             }
             return true;
         }
-        
-        public UserLog[] GetUsers()
-        {
-            return db.UserLog.ToArray();
-        }
+
+        public UserLog[] Users => db.UserLog.ToArray();
+        public string UserKey => db.Settings.FirstOrDefault(x => x.ParameterName == "UsersKey").ParameterValue;
 
         public UserLog GetUserLog(Expression<Func<UserLog, bool>> act)
         {

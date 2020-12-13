@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -12,10 +14,10 @@ namespace Winhex.Admin.Models
         {
             try
             {
-                System.Net.WebRequest req = System.Net.WebRequest.Create(Url + "?" + Data);
-                System.Net.WebResponse resp = req.GetResponse();
-                System.IO.Stream stream = resp.GetResponseStream();
-                System.IO.StreamReader sr = new System.IO.StreamReader(stream);
+                WebRequest req = WebRequest.Create(Url + "?" + Data);
+                WebResponse resp = req.GetResponse();
+                Stream stream = resp.GetResponseStream();
+                StreamReader sr = new StreamReader(stream);
                 string Out = sr.ReadToEnd();
                 sr.Close();
                 return Out;
@@ -68,6 +70,18 @@ namespace Winhex.Admin.Models
             {
                 return false;
             }
+        }
+
+        public static string GetHash(string str)
+        {
+            byte[] hash = Encoding.ASCII.GetBytes(str);
+            byte[] hashenc = new MD5CryptoServiceProvider().ComputeHash(hash);
+            string result = "";
+            foreach (var b in hashenc)
+            {
+                result += b.ToString("x2");
+            }
+            return result;
         }
     }
 }
