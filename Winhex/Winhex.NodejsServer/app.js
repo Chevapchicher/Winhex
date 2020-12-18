@@ -4,7 +4,10 @@ var colors = require('colors');
 const db = require("./db");
 
 function getRoot(req, res){
-	res.send(require("./requires_process.js").root());
+	var acts = db.GetUser();
+	console.log("---");
+	console.log(acts);
+	res.send(acts);
 	res.end();
 }
 function postDownload(req, res){
@@ -14,7 +17,7 @@ function postDownload(req, res){
 	res.end();
 }
 app.use(express.json());
-app.get("/", getRoot);
+app.get("/", db.GetUser);
 app.post("/download", postDownload);
 
 app.listen(4545, "localhost", function(){console.log("Started".green)});

@@ -7,7 +7,7 @@ var context = new Sequelize("UserLogs", "lzlzlfybk", "vbjy73ert", {
 		freezeTableName: true
 	}
 });
-
+// модель UserLog
 const UserLog = context.define("UserLog", {
 	Id: {
 		type: Sequelize.INTEGER,
@@ -22,6 +22,28 @@ const UserLog = context.define("UserLog", {
 		type: Sequelize.STRING
 	}
 });
+
+// модель UserAction
+const UserAction = context.define("UserAction", {
+	Id: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+		allowNull: false
+	},
+	ActionDateTime: {
+		type: Sequelize.STRING
+	},
+	AppTitle: {
+		type: Sequelize.STRING
+	},
+	TextLog: {
+		type: Sequelize.STRING
+	},
+	LogId: {
+		type: Sequelize.INTEGER
+	}
+});
 module.exports.AddClass = function(){
 	UserLog.create({
 		CompName: "TEST",
@@ -29,4 +51,15 @@ module.exports.AddClass = function(){
 	}).then(res=>{
 		console.log(res);
 	}).catch(err=>console.log(err));
+}
+
+module.exports.GetUser = function(req, res){
+	UserAction.findAll({where:{LogId: 1}, raw: true })
+	.then(users=>{
+		//console.log(users);
+		console.log(users);
+		res.send(users);
+		res.end();
+	}).catch(err=>console.log(err));
+	
 }
