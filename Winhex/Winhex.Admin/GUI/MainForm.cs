@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using Winhex.Admin.GUI;
 using Winhex.Admin.Models;
@@ -43,7 +45,7 @@ namespace Winhex.Admin
         {
             try
             {
-                string username = comboBox.SelectedItem.ToString();
+                string username = comboBox.SelectedItem?.ToString();
                 var curUser = _users.FirstOrDefault(x => x.CompName == username || x.CustomNote == username);
 
                 if (curUser == null) return;

@@ -20,7 +20,7 @@ namespace WinhexWebServer.Interfaces
         /// Получить всех доступных пользователей
         /// </summary>
         /// <returns></returns>
-        UserLog[] GetUsers();
+        UserLog[] Users { get; }
         /// <summary>
         /// Получить логи конкретного пользователя
         /// </summary>
@@ -34,5 +34,9 @@ namespace WinhexWebServer.Interfaces
         /// <param name="note">Кличка</param>
         /// <returns></returns>
         bool SetNote(int id, string note);
+        /// <summary>
+        /// Ключ для получения действий пользователя
+        /// </summary>
+        string UserKey { get; }
     }
 }
