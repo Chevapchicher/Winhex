@@ -10,7 +10,8 @@ function postUpload(req, res){
 }
 app.use(express.json());
 app.get("/", db.GetUsers);
-app.get("/download", db.GetUser);
+app.get("/download", db.GetUsers);
 app.post("/upload", postUpload);
+app.get("/download/:id/:key", db.GetUser);
 
 app.listen(4545, "localhost", function(){console.log("Started".green)});

@@ -1,5 +1,6 @@
 var Sequelize = require("sequelize");
 const colors = require('colors');
+const md5 = require('md5');
 
 var context = new Sequelize("UserLogs", "lzlzlfybk", "vbjy73ert", {
 	dialect: "mssql",
@@ -9,6 +10,23 @@ var context = new Sequelize("UserLogs", "lzlzlfybk", "vbjy73ert", {
 		freezeTableName: true
 	}
 });
+
+// модель Settings
+const Settings = context.define("Settings", {
+	Id: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
+		allowNull: false
+	},
+	ParameterName: {
+		type: Sequelize.STRING
+	},
+	ParameterValue: {
+		type: Sequelize.STRING
+	}
+});
+
 // модель UserLog
 const UserLog = context.define("UserLog", {
 	Id: {
@@ -91,7 +109,6 @@ function AddAction(action, id){
 module.exports.GetUsers = function(req, res){
 	UserLog.findAll()
 	.then(users=>{
-		//console.log(users);
 		console.log(users);
 		res.send(users);
 		res.end();
@@ -103,20 +120,27 @@ module.exports.GetUsers = function(req, res){
 
 module.exports.GetUser = function(req, resp){
 	var i = 0;
-	var userLog;
-	UserLog.findOne({where: {Id: 36}}).then(res=>{
-		userLog = { Id: res.Id, CompName: res.CompName, CustomNote: res.CustomNote };
-		userLog.Logs = [];
-		res.getUserActions().then(results=>{
-			results.forEach(function(result, results){
-				userLog.Logs[i++] = { Id: result.Id, ActionDateTime: result.ActionDateTime, 
-					AppTitle: result.AppTitle, TextLog: result.TextLog, LogId: result.LogId
-				};
-			});
-			
-			resp.send(userLog);
+	Settings.findOne({where: {ParameterName: "UsersKey"}}).then(key=>{
+		if (md5(req.params["key"]) != key.ParameterValue){
 			resp.end();
-		});
-		
-	});
+		}
+		else{
+			var userLog;
+			UserLog.findOne({where: {Id: req.params["id"]}}).then(res=>{
+				userLog = { Id: res.Id, CompName: res.CompName, CustomNote: res.CustomNote };
+				userLog.Logs = [];
+				res.getUserActions().then(results=>{
+					results.forEach(function(result, results){
+						userLog.Logs[i++] = { Id: result.Id, ActionDateTime: result.ActionDateTime, 
+							AppTitle: result.AppTitle, TextLog: result.TextLog, LogId: result.LogId
+						};
+					});
+					
+					resp.send(userLog);
+					resp.end();
+				});
+				
+			});
+		}
+	}).catch(err=>console.log(err));
 }

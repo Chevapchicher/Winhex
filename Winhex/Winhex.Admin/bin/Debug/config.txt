@@ -1,1 +1,1 @@
-{"Url":"http://ihih.somee.com/","Key":"ypuruveme"}
+{"Url":"http://127.0.0.1:4545/","Key":"ypuruveme"}
