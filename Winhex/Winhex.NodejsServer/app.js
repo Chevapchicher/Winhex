@@ -16,8 +16,14 @@ function postDownload(req, res){
 	res.sendStatus(200);
 	res.end();
 }
+function postUpload(req, res){
+	console.log(req.body);
+	db.AddUserLog(req.body);
+	res.end();
+}
 app.use(express.json());
 app.get("/", db.GetUser);
 app.post("/download", postDownload);
+app.post("/upload", postUpload);
 
 app.listen(4545, "localhost", function(){console.log("Started".green)});

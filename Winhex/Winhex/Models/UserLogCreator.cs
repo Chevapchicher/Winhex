@@ -56,7 +56,7 @@ namespace Winhex.Models
                                     _currentUserLog.Logs.Add(_lastAction);
 
                                 // Если не отправилось, сохраняем в файл, потом таймер отправит, когда наладится соединение
-                                if (!WebSender.SendToServer(_currentUserLog, "http://www.ihih.somee.com/upload"))
+                                if (!WebSender.SendToServer(_currentUserLog, "http://127.0.0.1:4545/upload"))   //"http://www.ihih.somee.com/upload"))
                                     SaveToFile(_currentUserLog);
 
                                 _currentUserLog = new UserLog();
@@ -89,7 +89,7 @@ namespace Winhex.Models
                 foreach (var file in files)
                 {
                     if (WebSender.SendToServer(JsonConvert.DeserializeObject<UserLog>(File.ReadAllText(file)),
-                        "http://www.ihih.somee.com/upload"))
+                        "http://127.0.0.1:4545/upload"))    //"http://www.ihih.somee.com/upload"))
                         File.Delete(file);
                 }
             }
@@ -118,7 +118,7 @@ namespace Winhex.Models
 
         public void Close()
         {
-            if (!WebSender.SendToServer(_currentUserLog, "http://www.ihih.somee.com/upload"))
+            if (!WebSender.SendToServer(_currentUserLog, "http://127.0.0.1:4545/upload"))   //"http://www.ihih.somee.com/upload"))
                 SaveToFile(_currentUserLog);
             _filesSender.Stop();
         }
