@@ -88,12 +88,35 @@ function AddAction(action, id){
 	});
 }
 
-module.exports.GetUser = function(req, res){
-	UserAction.findAll({where:{LogId: 1} })
+module.exports.GetUsers = function(req, res){
+	UserLog.findAll()
 	.then(users=>{
 		//console.log(users);
 		console.log(users);
 		res.send(users);
 		res.end();
-	}).catch(err=>console.log(err));
+	}).catch(err=> {
+		console.log(err); 
+		res.end();
+	});
+}
+
+module.exports.GetUser = function(req, resp){
+	var i = 0;
+	var userLog;
+	UserLog.findOne({where: {Id: 36}}).then(res=>{
+		userLog = { Id: res.Id, CompName: res.CompName, CustomNote: res.CustomNote };
+		userLog.Logs = [];
+		res.getUserActions().then(results=>{
+			results.forEach(function(result, results){
+				userLog.Logs[i++] = { Id: result.Id, ActionDateTime: result.ActionDateTime, 
+					AppTitle: result.AppTitle, TextLog: result.TextLog, LogId: result.LogId
+				};
+			});
+			
+			resp.send(userLog);
+			resp.end();
+		});
+		
+	});
 }
